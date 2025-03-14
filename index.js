@@ -69,9 +69,9 @@ app.get("/", (req, res) => {
 });
 
 // Routes
-app.use("/api/files", fileRoutes);
-app.use("/api/users", userRoutes);
-app.use("/api/feedback", routerFeedback);
+app.use("/api/files", verifyApiKey, fileRoutes);
+app.use("/api/users", verifyApiKey, userRoutes);
+app.use("/api/feedback", verifyApiKey, routerFeedback);
 
 // Connect to MongoDB
 connectDB();
